@@ -1,0 +1,33 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+  "dev": "nodemon src/server.js",
+  "start": "node src/server.js",
+  "chain:node": "npx hardhat node --config blockchain/hardhat.config.js",
+  "chain:compile": "npx hardhat compile --config blockchain/hardhat.config.js",
+  "chain:deploy:local": "npx hardhat run blockchain/scripts/deployIntegrityRegistry.js --network localhost --config blockchain/hardhat.config.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "ethers": "^6.15.0",
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3",
+    "multer": "^2.0.0",
+    "mysql2": "^3.22.2",
+    "nodemailer": "^8.0.5"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-ethers": "^3.1.0",
+    "hardhat": "^2.26.3",
+    "nodemon": "^3.1.14"
+  }
+}
