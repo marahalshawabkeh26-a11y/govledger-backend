@@ -17,13 +17,27 @@ async function start() {
       );
     }
 
-    app.listen(4000, '0.0.0.0', () => {
-      console.log('Server running on http://0.0.0.0:4000');
-    });
+    const PORT = process.env.PORT || 4000;
+
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
   } catch (error) {
     console.error("Failed to start server:", error.message);
     process.exit(1);
   }
+
+  app.get("/health", async (req, res) => {
+  try {
+    await pingDB(); // or your DB check function
+    res.json({ status: "ok", db: "connected" });
+  } catch (err) {
+    res.status(500).json({ status: "error", db: "failed" });
+  }
+});
+app.get("/health", (req, res) => {
+  res.send("Server is working ✅");
+});
 }
 
 start();
